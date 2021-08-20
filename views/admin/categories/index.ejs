@@ -1,0 +1,47 @@
+<%- include ('../../partials/header.ejs') %>
+<%- include ('../../partials/navbar.ejs') %>
+
+<div class="container">
+    <hr>
+    <h2>LISTAGEM DE CATEGORIAS</h2>
+    <a class="btn btn-success" href="/admin/categories/new">CRIAR NOVA CATEGORIA</a>
+    <hr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>TITULO</th>
+                <th>SLUG</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% categories.forEach(category => { %>
+                <tr>
+                    <th><%= category.id %></th>
+                    <th><%= category.title %></th>
+                    <th><%= category.slug %></th>
+                    <th>
+                        <a href="/admin/categories/edit/<%= category. id %>" class="btn btn-warning">EDITAR</a>
+
+                        <form method="POST" action="/admin/delete" style="display:inline;" onsubmit="deletar(event, this)">
+                            <input type="hidden" name="id" value="<%= category.id %>">
+                            <button class="btn btn-danger">DELETAR</button>
+                        </form>
+                    </th>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include ('../../partials/footer.ejs') %>
+<script>
+    function deletar(event, form){
+        event.preventDefault();
+        var decision = confirm("O REGISTRO SERA DELETADO, DESEJA PROSSEGUIR?");
+        if(decision){
+            form.submit();
+        }
+    }
+</script>

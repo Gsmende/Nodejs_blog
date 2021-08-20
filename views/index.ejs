@@ -1,0 +1,33 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/homenavbar.ejs') %>
+<body>
+    <div class="container">
+        <hr>
+        <div class="jumbotron">
+            <h1 class="display-4">BEM VINDO AO BLOG MENDES</h1>
+            <p class="lead">Este é um simples blog informativo para divulgação de artigos sobre a atualidade do meio tecnológico!</p>
+            <hr class="my-4">
+            <p>Apesar de existir uma grande variedade de linguagens de programação, algumas podem ser mais adequadas para certos 
+            negócios ou empresas. É preciso cuidado, pois você pode se tornar um mestre em uma linguagem específica, mas, se ela 
+            não for muito requisitada no mercado de trabalho, isso significa que poderá ter dificuldades em arranjar um emprego 
+            na área.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">CONTINUAR LENDO</a>
+        </div>
+        <hr>
+        <% articles.forEach(article => { %>
+            <div class="card">
+                <div class="card-header">
+                    <h2><%= article.title %></h2>
+                </div>
+
+                <div class="card-body">
+                    <a href="/<%= article.slug %>" class="btn btn-success">LER ARTIGO PUBLICADO</a>
+                </div>
+            </div>
+            <br>
+        <% }) %> 
+
+    </div>
+</body>
+
+<%- include ('partials/footer.ejs') %>
